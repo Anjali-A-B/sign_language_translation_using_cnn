@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Upload Image</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Image</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <div class="upload-container">
+                <input type="file" name="file" accept="image/*" required id="image-upload">
+            </div>
+            <div class="image-preview">
+                <img id="image-preview" src="" alt="Image Preview" style="display:none;">
+            </div>
+            <div class="predict-container" style="display:none;">
+                <button type="submit" class="predict-button">Predict</button>
+            </div>
+        </form>
+        <div class="button-container">
+            <a href="{{ url_for('home') }}" class="back-button">Back to Main</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("image-upload").addEventListener("change", function(event) {
+            const preview = document.getElementById("image-preview");
+            const predictButton = document.querySelector(".predict-container");
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block'; // Show the image
+                    predictButton.style.display = 'block'; // Show the Predict button after image
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>

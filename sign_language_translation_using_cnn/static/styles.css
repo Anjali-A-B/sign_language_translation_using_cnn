@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('background.jpg'); /* Set your background image */
+    background-size: cover;
+    background-position: center; /* Ensure the background image is centered */
+    text-align: center;
+    color: white;
+    margin: 0;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+/* General container styles */
+.container {
+    padding: 30px; /* Increased padding for better spacing */
+    background: rgba(0, 0, 0, 0.4); /* Semi-transparent black background */
+    border-radius: 20px;
+    width: 600px;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Slightly stronger shadow for better contrast */
+    text-align: center;
+}
+
+/* Heading styles */
+h1 {
+    font-size: 28px; /* Increased font size for better visibility */
+    margin-bottom: 20px;
+}
+
+/* Style for the predicted sign text */
+.container p {
+    font-size: 32px; /* Increased font size for emphasis */
+    font-weight: bold;
+    margin-top: 15px;
+    color: #ffdd57; /* A contrasting color for the predicted text */
+}
+
+/* Button styles */
+.button, .back-button {
+    display: inline-block;
+    padding: 15px 30px; /* Increased padding for a more prominent button */
+    background-color:  #4cae4c; /* Blue background for the button */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 18px; /* Larger font for better readability */
+    margin: 10px 5px;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.button:hover, .back-button:hover {
+    background-color: #4cae4c; /* Darker blue on hover */
+}
+
+
+/* File input styles */
+input[type="file"] {
+    display: block;
+    margin: 20px auto; /* Center the file input */
+    padding: 12px 20px; /* Increase size of file input */
+    font-size: 16px; /* Larger text for file input */
+    border-radius: 8px;
+    border: 2px solid #007bff; /* Blue border */
+    background-color: transparent; /* Transparent background */
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    max-width: 400px; /* Limit the width of the file input */
+    text-align: center; /* Center the text inside the input */
+}
+
+/* Hover effect for file input */
+input[type="file"]:hover {
+    border-color: #0056b3; /* Darker border color on hover */
+}
+
+/* Style for image preview */
+.image-preview {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+}
+
+/* Button container styles */
+.button-container {
+    margin-top: 20px;
+}
+
+.back-button {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+.back-button:hover {
+    text-decoration: none;
+}

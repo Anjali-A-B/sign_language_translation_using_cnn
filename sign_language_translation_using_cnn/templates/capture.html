@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Capture Image</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Capture Image</h1>
+        <video id="video" width="640" height="480" autoplay></video>
+        <button id="capture">Capture</button>
+        <a href="{{ url_for('home') }}" class="back-button">Back to Main</a>
+        <canvas id="canvas" style="display:none;"></canvas>
+    </div>
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const captureButton = document.getElementById('capture');
+
+        navigator.mediaDevices.getUser Media({ video: true })
+            .then(stream => {
+                video.srcObject = stream;
+            });
+
+        captureButton.addEventListener('click', () => {
+            const context = canvas.getContext('2d');
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const imageData = canvas.toDataURL('image/png');
+            fetch('/predict_capture', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ imageData: imageData })
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.body.innerHTML = data; // Display the result
+            });
+        });
+    </script>
+</body>
+</html>
